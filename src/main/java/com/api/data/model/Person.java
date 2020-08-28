@@ -1,20 +1,34 @@
-package com.api.model;
+package com.api.data.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(name = "first_name", length = 25, nullable = false)
 	private String firstName;
+	@Column(name = "last_name", length = 25, nullable = false)
 	private String lastName;
+	@Column(name = "address", length = 75, nullable = false)
 	private String address;
+	@Column(name = "gender", length = 6, nullable = false)
 	private String gender;
 
 	public Person() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public long getId() {
